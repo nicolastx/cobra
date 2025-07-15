@@ -1,10 +1,12 @@
 /* Estilo do corpo da página */
 body {
-  font-family: 'Press Start 2P', cursive; /* Fonte pixelada */
-  background-color: #5a7a5d; /* Fundo marrom, tipo terra */
-  color: white; /* Cor do texto */
-  text-align: center; /* Centraliza textos */
-  margin: 20px; /* Espaço ao redor da página */
+  font-family: 'Press Start 2P', cursive;
+  background-color: #5a7a5d;
+  color: white;
+  text-align: center;
+  margin: 20px;
+  min-height: 100vh;      
+  overflow-y: auto;       
 }
 
 /* Estilo do título */
