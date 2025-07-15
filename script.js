@@ -22,10 +22,15 @@ let speed = 200; // Velocidade inicial (em milissegundos entre frames)
 let isRunning = false; // Flag que indica se o jogo está rodando
 
 function resizeCanvas() {
-  const maxWidth = Math.floor(window.innerWidth / box) * box;
-  const maxHeight = Math.floor((window.innerHeight - 150) / box) * box; // Deixa espaço para UI
-  canvas.width = maxWidth;
-  canvas.height = maxHeight;
+  const maxCanvasSize = 500; // tamanho máximo do canvas (px)
+  const availableWidth = window.innerWidth - 40; // margem de segurança
+  const availableHeight = window.innerHeight - 180; // espaço pra UI
+
+  const size = Math.min(maxCanvasSize, availableWidth, availableHeight);
+  const canvasSize = Math.floor(size / box) * box; // ajusta para múltiplo do box (20)
+
+  canvas.width = canvasSize;
+  canvas.height = canvasSize;
 }
 
 // Função para iniciar/reiniciar o jogo
