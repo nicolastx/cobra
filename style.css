@@ -1,7 +1,7 @@
 /* Estilo da página */
 body {
   margin: 0;
-  background-color: #111;
+  background-color: #5a7a5d;
   color: white;
   font-family: Arial, sans-serif;
   display: flex;
@@ -14,9 +14,10 @@ body {
 
 /* Canvas do jogo */
 #game {
-  background-color: #222;
-  border: 2px solid #278a27;
+  background-color: #61442e;
+  border: 2px solid #462c17;
   margin-top: 20px;
+  box-shadow: 0 0 15px #795f3e;
   display: block;
 }
 
