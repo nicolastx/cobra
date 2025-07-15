@@ -1,4 +1,3 @@
-// Pega os elementos que vamos mexer no JS
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d"); // "contexto" pra desenhar no canvas
 const scoreEl = document.getElementById("score");
@@ -11,24 +10,25 @@ const countdownEl = document.getElementById("countdown");
 const eatSound = document.getElementById("eatSound"); // Som ao comer comida
 const dieSound = document.getElementById("dieSound"); // Som ao morrer
 
-const box = 20; // Tamanho do quadrado que forma a cobra e a comida (20x20 px)
+const box = 20;
 
-let direction = "right"; // Direção inicial da cobra
-let score = 0; // Pontuação
-let snake; // Array com as posições do corpo da cobra
-let food; // Posição da comida
-let game; // Variável do setInterval do jogo
-let speed = 200; // Velocidade inicial (em milissegundos entre frames)
-let isRunning = false; // Flag que indica se o jogo está rodando
+// Declarar as variaveis 
+let direction = "right"; 
+let score = 0; 
+let snake; 
+let food;
+let game;
+let speed = 200;
+let isRunning = false; 
 
 // Função para iniciar/reiniciar o jogo
 function init() {
-  direction = "right"; // Direção começa para direita
-  score = 0; // Reseta pontuação
-  speed = 200; // Reseta velocidade
-  isRunning = false; // Não começa ainda (espera contagem)
+  direction = "right"; 
+  score = 0;
+  speed = 200;
+  isRunning = false; //(espera contagem)
   
-  // Cobra começa com 3 quadrados, posicionados horizontalmente
+  // Cobra começa com 3 quadrados
   snake = [
     { x: 200, y: 200 },
     { x: 180, y: 200 },
@@ -43,7 +43,7 @@ function init() {
   countdown(3); // Começa contagem regressiva de 3 segundos
 }
 
-// Função da contagem regressiva que mostra na tela
+// Função da contagem regressiva
 function countdown(seconds) {
   countdownEl.textContent = seconds; // Mostra o número na tela
   if (seconds > 0) {
@@ -54,25 +54,25 @@ function countdown(seconds) {
   }
 }
 
-// Função que começa o jogo (chamada após a contagem)
+// Função que começa o jogo
 function startGame() {
   if (game) clearInterval(game); // Para qualquer intervalo rodando antes
-  game = setInterval(draw, speed); // Começa chamar draw a cada "speed" ms
+  game = setInterval(draw, speed); 
   isRunning = true; // Marca que o jogo está rodando
 }
 
-// Função que muda a direção da cobra ao apertar as setas
+// Função que muda a direção da cobra
 function changeDirection(event) {
-  if (!isRunning) return; // Se não está rodando, ignora
+  if (!isRunning) return; // Se não está rodando ignora
     
-  // Checa qual seta foi apertada e troca a direção (sem deixar inverter na hora)
+  // Checa qual seta foi apertada e troca a direção 
   if (event.key === "ArrowUp" && direction !== "down") direction = "up";
   else if (event.key === "ArrowDown" && direction !== "up") direction = "down";
   else if (event.key === "ArrowLeft" && direction !== "right") direction = "left";
   else if (event.key === "ArrowRight" && direction !== "left") direction = "right";
 }
 
-// Função que gera uma posição aleatória para a comida
+// Função do spawn da comida
 function spawnFood() {
   return {
     x: Math.floor(Math.random() * (canvas.width / box)) * box, // Multiplica por box pra ficar na grade
@@ -80,7 +80,7 @@ function spawnFood() {
   };
 }
 
-// Função que verifica se a cabeça colidiu com o corpo da cobra
+// Função que verifica se a cabeça bateu no corpo
 function collision(head, array) {
   return array.some(segment => segment.x === head.x && segment.y === head.y);
 }
@@ -203,10 +203,10 @@ function draw() {
   if (head.x === food.x && head.y === food.y) {
     score++; // Aumenta pontuação
     scoreEl.textContent = "Pontuação: " + score; // Atualiza na tela
-    eatSound.play(); // Toca som de comer
+    eatSound.play(); // Toca som 
     food = spawnFood(); // Gera nova comida
 
-    // Aumenta velocidade do jogo, mas com limite mínimo
+    // Aumenta velocidade do jogo (com limite maximo)
     if (speed > 50) {
       speed -= 4;
       clearInterval(game);
@@ -240,7 +240,7 @@ window.onload = () => {
 // Detecta as setas do teclado pra mudar a direção
 document.addEventListener("keydown", changeDirection);
 
-// Botão de reiniciar fora do game over
+// Botão de reiniciar
 restartBtn.addEventListener("click", () => {
   init();
 });
