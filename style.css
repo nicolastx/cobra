@@ -1,4 +1,3 @@
-/* Estilo do corpo da página */
 body {
   font-family: 'Press Start 2P', cursive;
   background-color: #5a7a5d;
@@ -14,7 +13,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-/* Pontuação na tela */
+/* Pontuação */
 #score {
   font-size: 1.2rem;
   margin-bottom: 10px;
@@ -33,7 +32,7 @@ h1 {
   display: none;
 }
 
-/* Estilo do canvas */
+/*canvas */
 #game {
   max-width: 100%;
   height: auto;
@@ -43,7 +42,7 @@ h1 {
   box-shadow: 0 0 15px #795f3e;
 }
 
-/* Estilo dos botões */
+/*botões */
 button {
   font-family: 'Press Start 2P', cursive;
   background-color: #254117;
