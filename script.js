@@ -21,12 +21,24 @@ let game; // Variável do setInterval do jogo
 let speed = 200; // Velocidade inicial (em milissegundos entre frames)
 let isRunning = false; // Flag que indica se o jogo está rodando
 
+function resizeCanvas() {
+  const maxWidth = Math.floor(window.innerWidth / box) * box;
+  const maxHeight = Math.floor((window.innerHeight - 150) / box) * box; // Deixa espaço para UI
+  canvas.width = maxWidth;
+  canvas.height = maxHeight;
+}
+
 // Função para iniciar/reiniciar o jogo
 function init() {
+  resizeCanvas();
+
   direction = "right"; // Direção começa para direita
   score = 0; // Reseta pontuação
   speed = 200; // Reseta velocidade
   isRunning = false; // Não começa ainda (espera contagem)
+
+  const startX = Math.floor(canvas.width / 2 / box) * box;
+  const startY = Math.floor(canvas.height / 2 / box) * box;
   
   // Cobra começa com 3 quadrados, posicionados horizontalmente
   snake = [
@@ -206,6 +218,12 @@ function draw() {
     snake.pop(); // Remove o último quadrado pra simular movimento
   }
 }
+
+window.addEventListener("resize", () => {
+  if (!isRunning) {
+    resizeCanvas();
+  }
+});
 
 // Quando a página carregar, inicia o jogo
 window.onload = () => {
