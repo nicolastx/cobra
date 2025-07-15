@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsividade -->
   <title>Jogo da Cobrinha</title> <!-- Título da aba do navegador -->
   
-  <!-- Fonte estilo "pixel", combina com jogo retro -->
+  <!-- Fonte estilo "pixel" -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   
   <!-- Link pro arquivo CSS externo -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Jogo da Cobrinha</h1> <!-- Título visível na página -->
+  <h1>Jogo da Cobrinha</h1> <!-- Título na página -->
 
   <div id="score">Pontuação: 0</div> <!-- Mostra a pontuação atual -->
-  <div id="countdown" class="hidden"></div> <!-- Contagem regressiva antes do jogo começar -->
+  <div id="countdown" class="hidden"></div> <!-- Contagem regressiva  -->
 
   <!-- Canvas onde o jogo será desenhado -->
   <canvas id="game" width="400" height="400"></canvas>
@@ -30,13 +30,13 @@
 </div>
 
 
-  <!-- Botão para reiniciar o jogo -->
+  <!-- Botão para reiniciar  -->
   <button id="restartBtn">Reiniciar</button>
 
-  <!-- Tela de Game Over que aparece por cima quando o jogo termina -->
+  <!-- Tela de Game Over  -->
   <div id="gameOver" class="hidden">
     <div id="finalScore"></div> <!-- Mostra a pontuação final -->
-    <button id="gameOverRestart">Jogar Novamente</button> <!-- Botão para reiniciar na tela de game over -->
+    <button id="gameOverRestart">Jogar Novamente</button> <!-- Botão para reiniciar no game over  -->
   </div>
 
   <!-- Sons usados no jogo -->
