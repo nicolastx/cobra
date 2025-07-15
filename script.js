@@ -21,43 +21,28 @@ let game; // Variável do setInterval do jogo
 let speed = 200; // Velocidade inicial (em milissegundos entre frames)
 let isRunning = false; // Flag que indica se o jogo está rodando
 
-function resizeCanvas() {
-  const maxCanvasSize = 500;
-  const availableWidth = window.innerWidth - 40;
-  const availableHeight = window.innerHeight - 180;
-
-  const size = Math.min(maxCanvasSize, availableWidth, availableHeight);
-  const canvasSize = Math.floor(size / box) * box;
-
-  canvas.width = canvasSize;
-  canvas.height = canvasSize;
-
-  return canvasSize;
-
 // Função para iniciar/reiniciar o jogo
 function init() {
-  const canvasSize = resizeCanvas(); // redimensiona e guarda o valor
-
-  direction = "right";
-  score = 0;
-  speed = 200;
-  isRunning = false;
-
-  const startX = Math.floor(canvasSize / 2 / box) * box;
-  const startY = Math.floor(canvasSize / 2 / box) * box;
-
+  direction = "right"; // Direção começa para direita
+  score = 0; // Reseta pontuação
+  speed = 200; // Reseta velocidade
+  isRunning = false; // Não começa ainda (espera contagem)
+  
+  // Cobra começa com 3 quadrados, posicionados horizontalmente
   snake = [
-    { x: startX, y: startY },
-    { x: startX - box, y: startY },
-    { x: startX - 2 * box, y: startY },
+    { x: 200, y: 200 },
+    { x: 180, y: 200 },
+    { x: 160, y: 200 },
   ];
-
-  food = spawnFood();
-  scoreEl.textContent = "Pontuação: " + score;
-  gameOverDiv.style.display = "none";
-  countdownEl.classList.remove("hidden");
-  countdown(3);
+  
+  food = spawnFood(); // Coloca comida aleatória no mapa
+  scoreEl.textContent = "Pontuação: " + score; // Atualiza pontuação na tela
+  
+  gameOverDiv.style.display = "none"; // Esconde tela de game over
+  countdownEl.classList.remove("hidden"); // Mostra contagem regressiva
+  countdown(3); // Começa contagem regressiva de 3 segundos
 }
+
 // Função da contagem regressiva que mostra na tela
 function countdown(seconds) {
   countdownEl.textContent = seconds; // Mostra o número na tela
@@ -221,12 +206,6 @@ function draw() {
     snake.pop(); // Remove o último quadrado pra simular movimento
   }
 }
-
-window.addEventListener("resize", () => {
-  if (!isRunning) {
-    resizeCanvas();
-  }
-});
 
 // Quando a página carregar, inicia o jogo
 window.onload = () => {
