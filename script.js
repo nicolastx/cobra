@@ -85,6 +85,16 @@ function collision(head, array) {
   return array.some(segment => segment.x === head.x && segment.y === head.y);
 }
 
+// Função que muda direção para botões mobile
+function changeDirectionMobile(newDirection) {
+  if (!isRunning) return;
+
+  if (newDirection === "up" && direction !== "down") direction = "up";
+  else if (newDirection === "down" && direction !== "up") direction = "down";
+  else if (newDirection === "left" && direction !== "right") direction = "left";
+  else if (newDirection === "right" && direction !== "left") direction = "right";
+}
+
 // Função principal que desenha tudo e atualiza o jogo
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas
@@ -207,9 +217,24 @@ function draw() {
   }
 }
 
-// Quando a página carregar, inicia o jogo
+// Quando a página carregar, inicia o jogo e configura os controles mobile
 window.onload = () => {
   init();
+
+  const upBtn = document.getElementById("upBtn");
+  const downBtn = document.getElementById("downBtn");
+  const leftBtn = document.getElementById("leftBtn");
+  const rightBtn = document.getElementById("rightBtn");
+
+  upBtn.addEventListener("touchstart", () => changeDirectionMobile("up"));
+  downBtn.addEventListener("touchstart", () => changeDirectionMobile("down"));
+  leftBtn.addEventListener("touchstart", () => changeDirectionMobile("left"));
+  rightBtn.addEventListener("touchstart", () => changeDirectionMobile("right"));
+
+  upBtn.addEventListener("click", () => changeDirectionMobile("up"));
+  downBtn.addEventListener("click", () => changeDirectionMobile("down"));
+  leftBtn.addEventListener("click", () => changeDirectionMobile("left"));
+  rightBtn.addEventListener("click", () => changeDirectionMobile("right"));
 };
 
 // Detecta as setas do teclado pra mudar a direção
