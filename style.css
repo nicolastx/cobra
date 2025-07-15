@@ -1,4 +1,4 @@
-/* Estilo básico da página */
+/* Estilo da página */
 body {
   margin: 0;
   background-color: #111;
@@ -69,7 +69,7 @@ body {
   align-items: center;
   gap: 10px;
   user-select: none;
-  z-index: 1000; /* para garantir que fique acima do canvas */
+  z-index: 1000; 
 }
 
 .horizontalBtns {
@@ -96,7 +96,6 @@ body {
   box-shadow: none;
 }
 
-/* Oculta a contagem quando a classe hidden estiver aplicada */
 .hidden {
   display: none;
 }
