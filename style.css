@@ -1,106 +1,98 @@
-/* Estilo da página */
+/* Estilo do corpo da página */
 body {
-  margin: 0;
+  font-family: 'Press Start 2P', cursive;
   background-color: #5a7a5d;
   color: white;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100vh;
-  overflow: hidden;
+  text-align: center;
+  margin: 20px;
+  min-height: 100vh;      
+  overflow-y: auto;       
 }
 
-/* Canvas do jogo */
+/* Estilo do título */
+h1 {
+  margin-bottom: 10px;
+}
+
+/* Pontuação na tela */
+#score {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* Contagem regressiva */
+#countdown {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Classe que esconde elementos */
+.hidden {
+  display: none;
+}
+
+/* Estilo do canvas */
 #game {
-  background-color: #61442e; 
+  max-width: 100%;
+  height: auto;
   display: block;
   margin: 0 auto 15px;
   border: 4px solid #462c17;
   box-shadow: 0 0 15px #795f3e;
-  width: 90vw;
-  max-width: 400px;
-  aspect-ratio: 1 / 1;
 }
 
-
-/* Pontuação e contagem */
-#score, #countdown {
-  font-size: 24px;
-  margin-top: 10px;
+/* Estilo dos botões */
+button {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #254117;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: background-color 0.3s ease;
 }
 
-/* Tela de Game Over */
+/* Botão ao passar o mouse */
+button:hover {
+  background-color: #3b5323;
+}
+
+/* Tela de game over */
 #gameOver {
-  position: absolute;
-  top: 40%;
+  position: fixed;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.85);
-  border: 2px solid #278a27;
-  padding: 20px 40px;
-  text-align: center;
-  display: none;
-  border-radius: 12px;
-  user-select: none;
-}
-
-#gameOver button {
-  margin-top: 15px;
-  padding: 10px 25px;
-  font-size: 18px;
-  border: none;
-  border-radius: 8px;
-  background-color: #278a27;
+  background-color: rgba(39, 30, 18, 0.9);
   color: white;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  transition: background-color 0.2s ease;
+  padding: 30px 40px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  z-index: 10;
+  display: none;
 }
 
-#gameOver button:hover {
-  background-color: #0f5a0f;
-}
 
-/* Controles mobile */
 #mobileControls {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  user-select: none;
-  z-index: 1000; 
-}
-
-.horizontalBtns {
-  display: flex;
-  gap: 10px;
+  margin-top: 10px;
 }
 
 #mobileControls button {
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
-  border: none;
-  border-radius: 10px;
-  background-color: #278a27;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  touch-action: manipulation;
-  cursor: pointer;
-  user-select: none;
+  font-size: 1.5rem;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  padding: 5px;
 }
 
-#mobileControls button:active {
-  background-color: #0f5a0f;
-  box-shadow: none;
-}
-
-.hidden {
-  display: none;
+/* Linha com esquerda e direita */
+.mobile-row {
+  display: flex;
+  gap: 10px;
 }
