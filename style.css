@@ -33,17 +33,13 @@ h1 {
 
 /* Estilo do canvas onde o jogo roda */
 #game {
-  display: block;
-  margin: 0 auto 15px;
-  border: 4px solid #462c17;
-  box-shadow: 0 0 15px #795f3e;
-  background-color: #61442e;
-
-  /* Responsivo com tamanho máximo */
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 1 / 1; 
+  background-color: #61442e; /* Fundo marrom */
+  display: block; /* Para o margin funcionar */
+  margin: 0 auto 15px; /* Centraliza horizontalmente e adiciona margem embaixo */
+  border: 4px solid #462c17; /* Borda marrom escura */
+  box-shadow: 0 0 15px #795f3e; /* Sombra marrom suave */
 }
+
 /* Estilo dos botões */
 button {
   font-family: 'Press Start 2P', cursive; /* Mesma fonte do resto */
