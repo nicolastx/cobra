@@ -97,6 +97,8 @@ function changeDirectionMobile(newDirection) {
 
 // Função principal que desenha tudo e atualiza o jogo
 function draw() {
+  ctx.fillStyle = "#52483b";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);                   
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas
 
   // Desenha a comida (vermelho)
