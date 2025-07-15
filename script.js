@@ -22,44 +22,42 @@ let speed = 200; // Velocidade inicial (em milissegundos entre frames)
 let isRunning = false; // Flag que indica se o jogo está rodando
 
 function resizeCanvas() {
-  const maxCanvasSize = 500; // tamanho máximo do canvas (px)
-  const availableWidth = window.innerWidth - 40; // margem de segurança
-  const availableHeight = window.innerHeight - 180; // espaço pra UI
+  const maxCanvasSize = 500;
+  const availableWidth = window.innerWidth - 40;
+  const availableHeight = window.innerHeight - 180;
 
   const size = Math.min(maxCanvasSize, availableWidth, availableHeight);
-  const canvasSize = Math.floor(size / box) * box; // ajusta para múltiplo do box (20)
+  const canvasSize = Math.floor(size / box) * box;
 
   canvas.width = canvasSize;
   canvas.height = canvasSize;
-}
+
+  return canvasSize;
 
 // Função para iniciar/reiniciar o jogo
 function init() {
-  resizeCanvas();
+  const canvasSize = resizeCanvas(); // redimensiona e guarda o valor
 
-  direction = "right"; // Direção começa para direita
-  score = 0; // Reseta pontuação
-  speed = 200; // Reseta velocidade
-  isRunning = false; // Não começa ainda (espera contagem)
+  direction = "right";
+  score = 0;
+  speed = 200;
+  isRunning = false;
 
-  const startX = Math.floor(canvas.width / 2 / box) * box;
-  const startY = Math.floor(canvas.height / 2 / box) * box;
-  
-  // Cobra começa com 3 quadrados, posicionados horizontalmente
+  const startX = Math.floor(canvasSize / 2 / box) * box;
+  const startY = Math.floor(canvasSize / 2 / box) * box;
+
   snake = [
-    { x: 200, y: 200 },
-    { x: 180, y: 200 },
-    { x: 160, y: 200 },
+    { x: startX, y: startY },
+    { x: startX - box, y: startY },
+    { x: startX - 2 * box, y: startY },
   ];
-  
-  food = spawnFood(); // Coloca comida aleatória no mapa
-  scoreEl.textContent = "Pontuação: " + score; // Atualiza pontuação na tela
-  
-  gameOverDiv.style.display = "none"; // Esconde tela de game over
-  countdownEl.classList.remove("hidden"); // Mostra contagem regressiva
-  countdown(3); // Começa contagem regressiva de 3 segundos
-}
 
+  food = spawnFood();
+  scoreEl.textContent = "Pontuação: " + score;
+  gameOverDiv.style.display = "none";
+  countdownEl.classList.remove("hidden");
+  countdown(3);
+}
 // Função da contagem regressiva que mostra na tela
 function countdown(seconds) {
   countdownEl.textContent = seconds; // Mostra o número na tela
