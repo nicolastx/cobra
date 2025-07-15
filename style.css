@@ -38,11 +38,10 @@ h1 {
   height: auto;
   display: block;
   margin: 0 auto 15px;
-  background-color: #c2f0c2;
+  background-color: #52483b;
   border: 4px solid #462c17;
   box-shadow: 0 0 15px #795f3e;
 }
-
 /*botões */
 button {
   font-family: 'Press Start 2P', cursive;
